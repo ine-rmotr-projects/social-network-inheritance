@@ -1,0 +1,39 @@
+# Example usage
+if __name__ == "__main__":
+    # Create users
+    john = User("John", "Lennon", "john@rmotr.com")
+    paul = User("Paul", "McCartney", "paul@rmotr.com")
+    george = User("George", "Harrison", "george@rmotr.com")
+
+    # John follows Paul and George
+    john.follow(paul)
+    john.follow(george)
+
+    # Paul and George create posts
+    paul.add_post(TextPost("Post 1"))
+    george.add_post(TextPost("Post 2"))
+    paul.add_post(TextPost("Post 3"))
+
+    # Print John's following list and timeline
+    print(f"{john} is following:")
+    for user in john.following:
+        print(f"  {user}")
+
+    print(f"{john}'s timeline:")
+    for post in john.get_timeline():
+        print(f"  {post}")
+
+    # Create different types of posts for John
+    text_post_1 = TextPost("All you need is love!")
+    picture_post_2 = PicturePost("Check my new guitar.", image_url='imgur.com/guitar.png')
+    checkin_post_3 = CheckInPost("At Abbey Road Studios", latitude="19.111", longitude="-9.2222")
+
+    # Add posts to John's profile
+    john.add_post(text_post_1)
+    john.add_post(picture_post_2)
+    john.add_post(checkin_post_3)
+
+    # Print different types of posts
+    print(f"\nPosts by {john}:")
+    for post in john.posts:
+        print(f"  {post}")
